@@ -26,18 +26,36 @@ class MyComponent extends React.Component {
     addNewJob = (job) => {
         console.log('check data', job);
         this.setState({
+            //tạo ra 1 mảng mới, ...this.state.arrJobs copy lại arrJobs ban đầu, thêm phần tử vào
             arrJobs: [...this.state.arrJobs, job]
         })
     }
 
-    render() {
+    deleteJob = (job) => {
+        let currentJob = this.state.arrJobs;
+        currentJob = currentJob.filter(item => item.id !== job.id)
+        this.setState({
+            arrJobs: currentJob
+        })
+    }
 
+    componentDidUpdate(prevProps, prevState) {
+        console.log('>>>> run didupdate:', 'prev state state: ', prevState, 'current state: ', this.state)
+    }
+
+    componentDidMount() {
+        console.log('>>>> run component did mount')
+    }
+
+    render() {
+        console.log('>>>  call render: ', this.state)
         return (
             <>
 
                 <AddComponent addNewJob={this.addNewJob} />
                 <ChildComponent
                     arrJobs={this.state.arrJobs}
+                    deleteJob={this.deleteJob}
                 />
             </>
 
