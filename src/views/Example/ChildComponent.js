@@ -8,12 +8,24 @@ class ChildComponent extends React.Component {
         // let name = this.props.name;
         // let age = this.props.age;
 
-        let {name, age} = this.props; //khi và chỉ khi tên biến trùng với key được truyền từ props bên Component cha
+        let {name, age, arrJobs} = this.props; //khi và chỉ khi tên biến trùng với key được truyền từ props bên Component cha
         return (
             
             <>
                 
                 <div>Child Component name: {name}, tuổi: {age}</div>
+                <div className="job-list">
+                    {
+                        arrJobs.map((item, index) => {
+                                return (
+                                    <div key={item.id}>
+                                        {item.id} - {item.title}
+                                    </div>
+                                )
+                            }
+                        )
+                    }
+                </div>
                 
             </>
             
