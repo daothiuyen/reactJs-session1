@@ -3,13 +3,17 @@ import React from "react";
 class MyComponent extends React.Component {
 
     state = {
-        'name' : 'Uyên',
+        'name' : '',
         'age' : '26 tuổi'
     }
     handleChangeName = (event) => {
         this.setState({
             name: event.target.value
         })
+    }
+
+    handleClickButton = () => {
+        alert('Click me')
     }
 
     render() {
@@ -19,13 +23,20 @@ class MyComponent extends React.Component {
 
         return (
             <>
+            
                 <div className="first">
                     <input type="text" value={this.state.name} onChange={(event) => this.handleChangeName(event)}/>
+                    <br/>
                     Hello!! My name {this.state.name}
                 </div>
                 <div className="second">
                     {this.state.age}
                 </div>
+                <div className="third">
+                    <button type="button" onClick={() => this.handleClickButton()}>Click me</button>
+                </div>
+                <br/>
+                
             </>
             
         )
