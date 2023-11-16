@@ -2,31 +2,18 @@ import React from "react";
 
 class ChildComponent extends React.Component {
 
-    state = {
-        'firstName' : '',
-        'lastName' : ''
-    }
-    handleChangeFirstName = (event) => {
-        this.setState({
-            firstName: event.target.value
-        })
-    }
-    handleChangeLastName = (event) => {
-        this.setState({
-            lastName: event.target.value
-        })
-    }
-    handleClick = (event) => {
-        event.preventDefault()
-        console.log('Check data input', this.state);
-    }
 
     render() {
+        console.log('Data', this.props)
+        // let name = this.props.name;
+        // let age = this.props.age;
 
+        let {name, age} = this.props; //khi và chỉ khi tên biến trùng với key được truyền từ props bên Component cha
         return (
-            <>
             
-                <div>Child Component {this.props.name}</div>
+            <>
+                
+                <div>Child Component name: {name}, tuổi: {age}</div>
                 
             </>
             
